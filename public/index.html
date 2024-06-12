@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="login-container">
+        <div class="login-container">
+            <div class="login-card">
+                <h1 class="login-title"><i class="fas fa-music"></i> Music Chat</h1>
+                <p class="login-subtitle">Conéctate con tus amigos y comparte tu música favorita</p>
+                <input type="text" id="username" class="form-control" placeholder="Nombre de usuario">
+                <button onclick="login()" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Iniciar
+                    sesión</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="chat-container" style="display: none;">
+        <div class="chat-container">
+            <div class="user-list" id="user-list">
+
+                <div class="user-list-header">Chats</div>
+                <ul class="list-group" id="users"></ul>
+            </div>
+            <div class="chat-section" id="group-chat">
+                <div class="chat-header">
+                    <h4>Chat General</h4>
+                    <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                </div>
+                <div class="chat-messages" id="group-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="groupMessage" placeholder="Escribe un mensaje">
+                    <button onclick="sendGroupMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="preset-messages">
+                    <div class="preset-message" onclick="sendPresetGroupMessage('¡Hola a todos!')">¡Hola a todos!</div>
+                    <div class="preset-message" onclick="sendPresetGroupMessage('¿Cómo están?')">¿Cómo están?</div>
+                    <div class="preset-message" onclick="sendPresetGroupMessage('¡Adiós!')">¡Adiós!</div>
+                </div>
+            </div>
+            <div class="chat-section" id="private-chat" style="display:none;">
+                <div class="chat-header">
+                    <h4>
+                        <button class="icon-button" onclick="goToGroupChat()">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        Chat con <span id="private-chat-username"></span>
+                    </h4>
+                </div>
+                <div class="chat-messages" id="private-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="privateMessage" placeholder="Escribe un mensaje">
+                    <button onclick="sendPrivateMessage()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="preset-messages">
+                    <div class="preset-message" onclick="sendPresetPrivateMessage('¡Hola!')">¡Hola!</div>
+                    <div class="preset-message" onclick="sendPresetPrivateMessage('¿Cómo estás?')">¿Cómo estás?</div>
+                    <div class="preset-message" onclick="sendPresetPrivateMessage('¡Adiós!')">¡Adiós!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
